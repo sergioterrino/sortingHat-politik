@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="./static/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SortingHat - politik</title>
+    <link href="./static/output.css" rel="stylesheet">
+    <style>
+        .range-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .range-input {
+            margin: 0 10px;
+        }
+
+        .range-value {
+            width: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w-full p-4 px-0 pt-3 md:px-18 lg:mx-18 xl:px-28 flex flex-col justify-center">
+        <nav class="flex justify-between items-center px-2">
+            <a href="/">
+                <div class="flex w-40">
+                    <img src="./static/hat.png" class="w-24" />
+                    <img src="./static/sortingHat.png" class="relative right-4 " />
+                </div>
+            </a>
+            <div class="text-center">
+                <h3 class="text-sm">Created by</h3>
+                <h1 class="text-md font-bold">Sergio Terrino</h1>
+            </div>
+        </nav>
+        <form id="survey-form" class="bg-transparent p-6 rounded-lg shadow-md">
+            <div id="questions-container"></div>
+            <div class="mx-auto text-center mt-4">
+                <button type="submit" class="py-3 mt-2 font-bold rounded-xl w-full bg-violet-900 hover:bg-violet-950">
+                    Enviar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const questions = [
+            "El Estado debería redistribuir la riqueza de los más ricos a los más pobres",
+            "El Estado debería intervenir fuertemente en la economía para garantizar igualdad de oportunidades",
+            "La sanidad debería ser completamente pública y gratuita para todos, incluidos los inmigrantes",
+            "El Estado debería financiar completamente la educación superior pública y limitar la privada",
+            "El impuesto de sucesiones debe eliminarse para evitar la doble imposición a las familias",
+            "Las pensiones deberían ser privadas y depender de los ahorros individuales, no de un sistema público",
+            "El país debería permitir la entrada libre de inmigrantes y facilitar su integración en la sociedad",
+            "Las regiones que lo deseen deberían poder celebrar referéndums para decidir su independencia",
+            "Hay una correlación entre inmigración y delincuencia en algunos colectivos culturales",
+            "Es suficiente con que una persona se identifique como mujer para serlo, independientemente de su sexo biológico",
+            "La pena de muerte debería ser una opción para crímenes especialmente graves",
+            "Todos los ciudadanos deberían recibir una Renta Básica Universal garantizada por el Estado",
+            "El mercado laboral debería ser flexible, permitiendo despidos y contrataciones libres con mínima regulación estatal",
+            "Se debería priorizar la natalidad de los ciudadanos nacionales sobre la de inmigrantes para preservar la identidad cultural",
+            "Sindicatos y partidos políticos deben recibir subvenciones públicas para su funcionamiento",
+            "La prostitución debería ser legalizada y regulada por el Estado",
+        ];
+
+        const questionsContainer = document.getElementById('questions-container');
+
+        questions.forEach((question, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'text-center rounded-xl p-4 pb-5 bg-cyan-950 mb-2';
+
+            const questionLabel = document.createElement('h3');
+            questionLabel.className = 'text-center text-lg font-semibold mx-2 mb-6';
+            questionLabel.textContent = question;
+            questionDiv.appendChild(questionLabel);
+
+            const rangeWrapper = document.createElement('div');
+            rangeWrapper.className = 'range-wrapper flex justify-center';
+
+            const rangeInput = document.createElement('input');
+            rangeInput.type = 'range';
+            rangeInput.min = '1';
+            rangeInput.max = '10';
+            rangeInput.value = '5';
+            rangeInput.className = 'range-input';
+            rangeInput.name = `question${index}`;
+            rangeInput.oninput = function () {
+                rangeValue.textContent = rangeInput.value;
+            };
+            rangeWrapper.appendChild(rangeInput);
+
+            const rangeValue = document.createElement('div');
+            rangeValue.className = 'range-value';
+            rangeValue.textContent = '5';
+            rangeWrapper.appendChild(rangeValue);
+
+            questionDiv.appendChild(rangeWrapper);
+            questionsContainer.appendChild(questionDiv);
+        });
+
+        document.getElementById('survey-form').onsubmit = async function (event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const results = [];
+            for (let [key, value] of formData.entries()) {
+                results.push(parseInt(value));
+            }
+            const response = await fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ results })
+            });
+            if (response.ok) {
+                const html = await response.text();
+                document.open();
+                document.write(html);
+                document.close();
+            } else {
+                console.error('Error submitting survey');
+            }
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SortingHat - politik</title>
+    <link href="/static/output.css" rel="stylesheet">
+    <style>
+        .range-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .range-input {
+            margin: 0 10px;
+        }
+
+        .range-value {
+            width: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body >
+    <div class="w-full p-4 px-0 pt-3 md:px-18 lg:mx-18 xl:px-28 flex flex-col justify-center">
+        <nav class="flex justify-between items-center px-2">
+            <div class="flex w-40">
+                <img src="/static/hat.png" class="w-24" />
+                <img src="/static/sortingHat.png" class="relative right-4 " />
+            </div>
+            <div class="text-center">
+                <h3 class="text-sm">Created by</h3>
+                <h1 class="text-md font-bold">Sergio Terrino</h1>
+            </div>
+        </nav>
+        <form id="survey-form" class="bg-transparent p-6 rounded-lg shadow-md">
+            <div id="questions-container"></div>
+            <div class="mx-auto text-center mt-4">
+                <button type="submit"
+                    class="py-2 mt-2 font-bold rounded-xl w-80 border hover:text-zinc-800 hover:bg-white">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const questions = [
+            "El gobierno debería redistribuir la riqueza de los ricos entre los pobres",
+            "Debemos pagar la sanidad de las personas extranjeras (Sanidad Pública Universal)",
+            "Las pensiones deberían ser privadas y no públicas, cada uno debería ahorrar para su jubilación",
+            "Es legítimo que los países favorezcan su propia religión antes que las de los demás",
+            "Solo los catalanes deberían votar y decidir sobre la independencia de Cataluña",
+            "Es suficiente con que una persona se autoperciba mujer para serlo",
+            "En algunos casos, la pena de muerte debería ser una opción",
+            "Crees en la libre circulación entre países y la acogida de inmigrantes",
+            "Existe una cierta relación entre delincuencia y ciertos colectivos culturales",
+            "Se debe priorizar la natalidad de los españoles frente a la de los inmigrantes",
+            "La prostitución debería ser legalizada",
+            "Las personas que renuncian a un trabajo no deberían recibir ayudas por desempleo",
+            "Solo deberíamos acoger inmigrantes con edades comprendidas entre 18 y 40 años",
+            "El impuesto de sucesiones debería ser eliminado",
+            "Crees en una Renta Básica Universal para todos los ciudadanos",
+            "Sindicatos y partidos políticos deben recibir subvenciones del estado"
+        ];
+
+        const questionsContainer = document.getElementById('questions-container');
+
+        questions.forEach((question, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'text-center rounded-xl p-4 pb-5 bg-cyan-950 mb-2';
+
+            const questionLabel = document.createElement('h3');
+            questionLabel.className = 'text-center text-lg font-semibold mx-2 mb-6';
+            questionLabel.textContent = question;
+            questionDiv.appendChild(questionLabel);
+
+            const rangeWrapper = document.createElement('div');
+            rangeWrapper.className = 'range-wrapper flex justify-center';
+
+            const rangeInput = document.createElement('input');
+            rangeInput.type = 'range';
+            rangeInput.min = '1';
+            rangeInput.max = '10';
+            rangeInput.value = '5';
+            rangeInput.className = 'range-input';
+            rangeInput.name = `question${index}`;
+            rangeInput.oninput = function () {
+                rangeValue.textContent = rangeInput.value;
+            };
+            rangeWrapper.appendChild(rangeInput);
+
+            const rangeValue = document.createElement('div');
+            rangeValue.className = 'range-value';
+            rangeValue.textContent = '5';
+            rangeWrapper.appendChild(rangeValue);
+
+            questionDiv.appendChild(rangeWrapper);
+            questionsContainer.appendChild(questionDiv);
+        });
+
+        document.getElementById('survey-form').onsubmit = async function (event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const results = [];
+            for (let [key, value] of formData.entries()) {
+                results.push(parseInt(value));
+            }
+            const response = await fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ results })
+            });
+            if (response.ok) {
+                const html = await response.text();
+                document.open();
+                document.write(html);
+                document.close();
+            } else {
+                console.error('Error submitting survey');
+            }
+        };
+    </script>
+</body>
+
+</html>

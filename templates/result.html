@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SortingHat - politik</title>
+    <link href="../static/output.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="w-full p-4 px-0 pt-3 md:px-18 lg:mx-18 xl:px-28 flex flex-col justify-center">
+        <nav class="flex justify-between items-center px-2">
+            <a href="/">
+                <div class="flex w-40">
+                    <img src="../static/hat.png" class="w-24" />
+                    <img src="../static/sortingHat.png" class="relative right-4 " />
+                </div>
+            </a>
+            <div class="text-center">
+                <h3 class="text-sm">Created by</h3>
+                <h1 class="text-md font-bold">Sergio Terrino</h1>
+            </div>
+        </nav>
+        <div class="text-center h-full flex flex-col justify-center p-6 md:p-12 mt-4">
+            <div class="mb-4">
+                <div>
+                    <h1>Se encuentra dentro del espectro político del
+                        <span class="font-bold">{{ closest_ideology }} </span>
+                    </h1>
+                    <div class="justify-center mx-auto mt-4 grid sm:grid-cols-1 widtherius">
+                        {% for n in notes.split(",") %}
+                        <h1 class="px-2 py-2 rounded-xl mx-2 border borderius mt-2 widtherius">{{n}}</h1>
+                        {% endfor %}
+                    </div>
+                </div>
+                <h1 class="mt-4">El partido más cercano es:
+                    <span class="font-bold">{{ closest_party }} </span>
+                </h1>
+            </div>
+            <div class="md:w-4 flex justify-center">
+                <img class="mt-4 rounded-xl" src="../static/{{ closest_party }}.png" alt="{{ closest_ideology }}">
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
