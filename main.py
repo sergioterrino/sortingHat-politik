@@ -138,7 +138,7 @@ async def submit_survey(request: Request, survey_response: SurveyResponse):
     # result_html = result_html.replace("{{ closest_party }}", closest_party.upper())
     # result_html = result_html.replace("{{ notes }}", notes)
     # return HTMLResponse(content=result_html, status_code=200)
-    return templates.TemplateResponse("result.html", {"request": request, "closest_ideology": closest_ideology.upper(), "closest_party": closest_party.upper(), "notes": notes})
+    return templates.TemplateResponse("result.html", {"request": request, "closest_ideology": closest_ideology.upper(), "closest_party": closest_party.upper(), "closest_party_photo": closest_party, "notes": notes})
   
 @app.get('/result')
 async def get_result():
