@@ -14,29 +14,30 @@ templates = Jinja2Templates(directory="templates")
 class SurveyResponse(BaseModel):
   results: List[int]
 
-weights = [0.4, 0.35, 0.35, 0.3, 0.2, 0.3, 0.25, 0.35, 0.3, 0.4, 0.25, 0.35, 0.25, 0.2, 0.35, 0.3]
+weights = [0.4, 0.35, 0.35, 0.2, 0.35, 0.35, 0.35, 0.35, 0.35, 0.4, 0.35, 0.4, 0.35, 0.35, 0.35, 0.4]
 
-# grupos ideológicos
-comunismo = [10, 10, 10, 10, 1, 1, 10, 5, 1, 10, 1, 10, 1, 1, 10, 8]
-socialismo = [9, 9, 9, 9, 3, 2, 9, 6, 3, 2, 9, 2, 3, 3, 9, 9]
-socialdemocracia = [7, 8, 8, 8, 4, 3, 7, 6, 3, 8, 2, 8, 4, 4, 8, 6]
-liberalismo = [3, 3, 4, 3, 7, 8, 6, 6, 5, 6, 4, 3, 8, 5, 2, 5]
-conservadurismo = [2, 2, 2, 3, 9, 8, 2, 3, 8, 2, 9, 2, 8, 8, 2, 5]
-neoliberalismo = [1, 1, 1, 1, 9, 10, 3, 4, 6, 3, 6, 1, 10, 6, 1, 6]
-nacionalismo = [3, 4, 3, 3, 6, 7, 1, 10, 9, 3, 8, 3, 7, 10, 3, 4]
-libertarismo = [1, 2, 1, 2, 9, 10, 7, 4, 5, 5, 8, 1, 10, 4, 1, 8]
+# grupos ideológicos  
+comunismo = [10, 1, 10, 1, 10, 10, 10, 5, 5, 10, 1, 10, 10, 1, 9, 10]
+socialismo = [9, 3, 9, 3, 9, 9, 2, 9, 6, 9, 3, 2, 2, 3, 10, 10]
+socialdemocracia = [8, 4, 8, 4, 8, 7, 3, 8, 6, 8, 3, 8, 8, 4, 9, 9]
+liberalismo = [4, 8, 4, 7, 3, 6, 8, 5, 6, 2, 5, 6, 3, 5, 5, 4]
+conservadurismo = [3, 8, 2, 9, 2, 2, 8, 2, 3, 2, 8, 2, 2, 8, 2, 2]
+neoliberalismo = [1, 10, 1, 9, 1, 3, 10, 3, 4, 1, 6, 3, 1, 6, 3, 3]
+nacionalismo = [4, 7, 3, 6, 4, 1, 7, 7, 10, 3, 9, 3, 3, 10, 5, 5]
+libertarismo = [2, 10, 1, 9, 2, 7, 10, 4, 4, 1, 5, 5, 1, 4, 1, 1]
 
-weights_parties = [0.45, 0.4, 0.4, 0.35, 0.3, 0.4, 0.35, 0.4, 0.35, 0.45, 0.3, 0.4, 0.3, 0.25, 0.4, 0.4]
+weights_parties = [0.45, 0.35, 0.4, 0.3, 0.35, 0.4, 0.35, 0.35, 0.4, 0.35, 0.45, 0.4, 0.25, 0.4, 0.4, 0.35]
 
-pcte = [10, 10, 10, 10, 1, 1, 10, 5, 1, 10, 1, 10, 1, 1, 10, 8] # Comunista
-podemos = [9, 9, 9, 9, 3, 2, 9, 6, 2, 10, 2, 9, 1, 3, 10, 9]
-sumar = [9, 9, 9, 9, 4, 3, 8, 7, 2, 9, 3, 8, 2, 3, 10, 7]
-psoe = [8, 8, 8, 8, 3, 3, 7, 6, 3, 6, 3, 7, 2, 3, 9, 6] # Socialdemocracia moderada
-pp = [3, 3, 4, 3, 9, 8, 4, 3, 8, 2, 6, 2, 8, 8, 4, 5] # Conservadurismo liberal
-vox = [1, 1, 2, 3, 10, 9, 2, 2, 9, 1, 9, 1, 9, 9, 1, 3] # Conservadurismo con nacionalismo
-erc = [8, 7, 3, 4, 10, 8, 2, 10, 3, 3, 8, 2, 3, 8, 8, 9] # Nacionalismo con socialdemocracia
-junts = [3, 4, 3, 3, 6, 7, 1, 10, 9, 3, 8, 3, 7, 10, 3, 4] # Nacionalismo
-p_lib = [1, 2, 1, 2, 9, 10, 7, 4, 5, 5, 8, 1, 10, 4, 1, 8] # Libertarismo
+pcte = [10, 1, 10, 1, 10, 10, 1, 5, 5, 10, 1, 10, 10, 1, 8, 10] # Comunista
+podemos = [9, 1, 9, 3, 9, 9, 2, 9, 6, 10, 2, 10, 9, 3, 10, 10]
+sumar = [9, 2, 9, 4, 9, 8, 3, 8, 7, 10, 2, 9, 8, 3, 9, 9]
+psoe = [8, 2, 8, 3, 8, 7, 3, 8, 6, 9, 3, 6, 7, 3, 8, 9] # Socialdemocracia moderada
+pp = [3, 8, 4, 9, 3, 4, 8, 5, 3, 4, 8, 2, 2, 8, 5, 4] # Conservadurismo liberal
+vox = [1, 9, 2, 10, 1, 2, 9, 2, 2, 1, 9, 9, 1, 9, 2, 2] # Conservadurismo con nacionalismo
+erc = [8, 3, 3, 10, 7, 2, 8, 8, 10, 8, 3, 3, 2, 8, 8, 7] # Nacionalismo con socialdemocracia
+junts = [3, 7, 3, 6, 4, 1, 7, 7, 10, 3, 9, 3, 3, 10, 6, 5] # Nacionalismo
+p_lib = [1, 10, 1, 9, 2, 7, 10, 4, 4, 1, 5, 5, 1, 4, 1, 1] # Libertarismo
+
 
 def calculate_weighted_euclidean_distance(user_responses, reference_vector, weights):
     distance = 0
