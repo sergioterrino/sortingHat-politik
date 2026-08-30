@@ -25,13 +25,19 @@
         <div class="text-center h-full flex flex-col justify-center p-6 md:p-12 mt-4">
             <div class="mb-4">
                 <div>
-                    <h1>Se encuentra dentro del espectro político del
+                    <h1>Se acerca más al espectro político de
                         <span class="font-bold">{{ closest_ideology }} </span>
                     </h1>
-                    <div class="justify-center mx-auto mt-4 grid sm:grid-cols-1 widtherius">
-                        {% for n in notes.split(",") %}
-                        <h1 class="px-2 py-2 rounded-xl mx-2 border borderius mt-2 widtherius">{{n}}</h1>
+                    <p class="mt-3 text-lg">{{ summary }}</p>
+                    <div class="justify-center mx-auto mt-4 grid sm:grid-cols-1">
+                        {% for match in top_matches %}
+                        <h1 class="px-2 py-2 rounded-xl mx-2 border mt-2">{{ match }}</h1>
                         {% endfor %}
+                    </div>
+                    <div class="mt-6 text-left mx-auto max-w-xl">
+                        <p><strong>Economía:</strong> {{ economic }}</p>
+                        <p><strong>Social:</strong> {{ social }}</p>
+                        <p><strong>Identidad:</strong> {{ identity }}</p>
                     </div>
                 </div>
                 <h1 class="mt-4">El partido más cercano es:
