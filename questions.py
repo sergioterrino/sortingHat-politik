@@ -1,18 +1,74 @@
-POLITIC_QUESTIONS = {
-    'q1': "El Estado debería redistribuir la riqueza de los más ricos a los más pobres",
-    'q2': "El mercado laboral debería ser flexible, permitiendo despidos y contrataciones libres con mínima regulación estatal",
-    'q3': "La sanidad debería ser completamente pública y gratuita para todos, incluidos los inmigrantes",
-    'q4': "El impuesto de sucesiones debe eliminarse para evitar la doble imposición a las familias",
-    'q5': "El Estado debería intervenir fuertemente en la economía para garantizar igualdad de oportunidades",
-    'q6': "El país debería permitir la entrada libre de inmigrantes y facilitar su integración en la sociedad",
-    'q7': "Las pensiones deberían ser privadas y depender de los ahorros individuales, no de un sistema público",
-    'q8': "España debe implementar restricciones más severas al uso de coches de combustión, promoviendo los coches eléctricos, a pesar de las implicaciones económicas y medioambientales de su producción, el coste elevado para los ciudadanos y el impacto en la industria automovilística tradicional",
-    'q9': "Las regiones que lo deseen deberían poder celebrar referéndums para decidir su independencia",
-    'q10': "Sindicatos, partidos políticos y medios de comunicación deben recibir subvenciones públicas para su funcionamiento",
-    'q11': "Hay una correlación entre inmigración y delincuencia en algunos colectivos culturales",
-    'q12': "Es suficiente con que una persona se identifique como mujer para serlo, independientemente de su sexo biológico",
-    'q13': "Todos los ciudadanos deberían recibir una Renta Básica Universal garantizada por el Estado",
-    'q14': "Se debería priorizar la natalidad de los ciudadanos nacionales sobre la de inmigrantes para preservar la identidad cultural",
-    'q15': "El Estado debería priorizar el uso de energías renovables, incluso si esto implica un mayor coste económico o perjuicios medioambientales, como la pérdida de tierras de cultivo o biodiversidad",
-    'q16': "Dado el elevado nivel de deuda pública en España, se deberían seguir priorizando ayudas públicas y el mantenimiento del estado de bienestar, aunque ello implique un aumento de impuestos como el IVA y el IRPF",
-}
+POLITIC_QUESTIONS = [
+    {
+        "id": "q1",
+        "axis": "economic",
+        "direction": 1,
+        "text": "El Estado debería redistribuir más riqueza para reducir la desigualdad social."
+    },
+    {
+        "id": "q2",
+        "axis": "economic",
+        "direction": -1,
+        "text": "La economía debería funcionar más con libertad de mercado y menos con intervención pública."
+    },
+    {
+        "id": "q3",
+        "axis": "economic",
+        "direction": 1,
+        "text": "La sanidad, la educación y otros servicios esenciales deberían ser mayoritariamente públicos."
+    },
+    {
+        "id": "q4",
+        "axis": "economic",
+        "direction": 1,
+        "text": "Las empresas estratégicas y los servicios esenciales deberían estar más controlados por el Estado."
+    },
+    {
+        "id": "q5",
+        "axis": "social",
+        "direction": 1,
+        "text": "La libertad individual y la diversidad deben primar por encima de las normas morales tradicionales."
+    },
+    {
+        "id": "q6",
+        "axis": "social",
+        "direction": -1,
+        "text": "La familia, la tradición y el orden social deberían tener más peso en la política."
+    },
+    {
+        "id": "q7",
+        "axis": "social",
+        "direction": 1,
+        "text": "La igualdad de género y los derechos civiles deben avanzar más rápidamente."
+    },
+    {
+        "id": "q8",
+        "axis": "social",
+        "direction": -1,
+        "text": "La seguridad y el orden público deberían tener prioridad ante otras consideraciones sociales."
+    },
+    {
+        "id": "q9",
+        "axis": "identity",
+        "direction": 1,
+        "text": "Las regiones con identidad propia deberían poder decidir más sobre su futuro político."
+    },
+    {
+        "id": "q10",
+        "axis": "identity",
+        "direction": 1,
+        "text": "España debería priorizar la identidad nacional y la cultura propia en políticas migratorias y sociales."
+    },
+    {
+        "id": "q11",
+        "axis": "identity",
+        "direction": 1,
+        "text": "España debe recuperar más soberanía frente a decisiones de la Unión Europea."
+    },
+    {
+        "id": "q12",
+        "axis": "identity",
+        "direction": -1,
+        "text": "La diversidad cultural y la pluralidad social deben priorizarse por encima de la identidad nacional."
+    }
+]
