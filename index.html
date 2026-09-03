@@ -1,34 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="./static/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sombrero Seleccionador | Test político</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>SortingHat - politik</title>
+    <link href="./static/output.css" rel="stylesheet">
     <style>
-        :root{--ink:#17211d;--muted:#68736d;--paper:#f4f0e7;--card:#fffdf8;--lime:#d8f35b;--coral:#f27f63;--line:#d9d6cc}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at 80% 0%,#e6f2c2 0,transparent 30%),var(--paper);font:16px 'DM Sans',sans-serif}main{max-width:860px;margin:auto;padding:28px 22px 70px}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:55px}.brand{font:700 22px 'Space Grotesk'}.brand span{color:#e35f42}.counter{color:var(--muted);font-size:14px}.intro{max-width:680px;margin-bottom:35px}h1,h2{font-family:'Space Grotesk';letter-spacing:0}h1{font-size:clamp(35px,6vw,64px);line-height:1.02;margin:0 0 18px}.intro p{color:var(--muted);font-size:18px;line-height:1.55;margin:0}.progress{height:7px;background:#dedbd1;border-radius:10px;overflow:hidden;margin:30px 0 18px}#progress-bar{height:100%;width:5%;background:var(--coral);transition:width .25s ease}#question-card{background:var(--card);border:1px solid var(--line);padding:clamp(24px,5vw,52px);min-height:355px;box-shadow:10px 12px 0 #dfe8ba}.eyebrow{color:#bb543c;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}h2{font-size:clamp(24px,4vw,36px);line-height:1.16;margin:18px 0 42px;max-width:690px}input[type=range]{width:100%;accent-color:#df684d;cursor:pointer}.range-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-top:10px;gap:20px}.range-labels span:last-child{text-align:right}.value{display:block;text-align:center;font:700 26px 'Space Grotesk';margin-top:18px}.actions{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:28px}button{border:0;padding:14px 22px;font:700 15px 'DM Sans';cursor:pointer;border-radius:2px}.back{color:var(--muted);background:transparent}.next{background:var(--ink);color:white;min-width:130px}button:hover{transform:translateY(-1px)}button:disabled{opacity:.45;cursor:not-allowed;transform:none}.fine-print{color:var(--muted);font-size:12px;margin-top:28px;line-height:1.5}@media(max-width:600px){main{padding:22px 16px 50px}header{margin-bottom:38px}.intro p{font-size:16px}#question-card{box-shadow:6px 7px 0 #dfe8ba}.actions{margin-top:22px}}
+        .range-wrapper { display: flex; align-items: center; }
+        .range-input { margin: 0 10px; }
+        .range-value { width: 30px; text-align: center; }
     </style>
 </head>
-
-<body><main>
-    <header><div class="brand">EL SOMBRERO SELECCIONADOR<span> / </span>politik</div><div class="counter" id="counter">Pregunta 1 de 20</div></header>
-    <section class="intro"><h1>Descubre tus coordenadas políticas.</h1><p>Una lectura en tres dimensiones: economía, libertades sociales e identidad territorial. No busca meterte en una caja, sino enseñarte dónde se parecen tus ideas.</p></section>
-    <div class="progress" aria-label="Progreso"><div id="progress-bar"></div></div>
-        <form id="survey-form">
-            <div id="question-card"></div><div class="actions"><button type="button" class="back" id="back">Atrás</button><button type="submit" class="next" id="next">Siguiente</button></div>
-        </form><p class="fine-print">Responde según lo que piensas, no según el partido que apoyes. El resultado es orientativo y no constituye una recomendación de voto.</p>
-    </main>
-
+<body>
+    <div class="w-full p-4 px-0 pt-3 md:px-18 lg:mx-18 xl:px-28 flex flex-col justify-center">
+        <nav class="flex justify-between items-center px-2">
+            <a href="/"><div class="flex w-40"><img src="./static/hat.png" class="w-24" /><img src="./static/sortingHat.png" class="relative right-4" /></div></a>
+            <div class="text-center"><h3 class="text-sm">Created by</h3><h1 class="text-md font-bold">Sergio Terrino</h1></div>
+        </nav>
+        <form id="survey-form" class="bg-transparent p-6 rounded-lg shadow-md">
+            <div id="questions-container"></div>
+            <div class="mx-auto text-center mt-4"><button type="submit" class="py-3 mt-2 font-bold rounded-xl w-full bg-violet-900 hover:bg-violet-950">Enviar</button></div>
+        </form>
+    </div>
     <script>
-        const questions = ["El Estado debería redistribuir más riqueza para reducir la desigualdad.","La economía debería funcionar con más libertad de mercado y menos regulación pública.","Sanidad, educación y dependencia deberían ser mayoritariamente públicas, aunque implique pagar más impuestos.","El Estado debería intervenir para garantizar vivienda asequible, incluso regulando los alquileres.","Bajar impuestos debería ser prioritario, aunque reduzca algunos servicios públicos.","Las grandes empresas y los sectores estratégicos deberían estar más supervisados por el Estado.","La libertad individual debe protegerse aunque contradiga costumbres o normas morales tradicionales.","La familia, la tradición y la autoridad deberían tener más peso en la vida pública.","La igualdad entre hombres y mujeres y los derechos LGTBI deberían avanzar aunque genere conflicto cultural.","Para reducir la delincuencia, habría que priorizar penas más duras y más presencia policial.","La inmigración debería facilitarse cuando exista un plan real de integración y empleo.","El Estado debería acelerar la transición ecológica aunque algunas medidas encarezcan el consumo a corto plazo.","Las comunidades con una identidad nacional propia deberían poder decidir más sobre su futuro político.","España debería reforzar una identidad nacional común frente a la fragmentación territorial.","España debería recuperar soberanía frente a decisiones de la Unión Europea.","La pertenencia a la Unión Europea aporta más beneficios que costes y debería profundizarse.","La diversidad cultural y lingüística debería tener más reconocimiento en las instituciones del Estado.","Las políticas migratorias deberían priorizar la cohesión cultural y las costumbres compartidas.","Las pensiones públicas deberían protegerse aunque haya que reformar impuestos y cotizaciones.","En situaciones de crisis, la estabilidad y el orden deberían pesar más que ampliar derechos o libertades."];
-        let current=0;const answers=Array(questions.length).fill(5);const card=document.getElementById('question-card');
-        function render(){const n=current+1;document.getElementById('counter').textContent=`Pregunta ${n} de ${questions.length}`;document.getElementById('progress-bar').style.width=`${n/questions.length*100}%`;card.innerHTML=`<div class="eyebrow">Tu nivel de acuerdo</div><h2>${questions[current]}</h2><input id="answer" type="range" min="1" max="10" value="${answers[current]}" aria-label="Nivel de acuerdo"><output class="value" id="value">${answers[current]}</output><div class="range-labels"><span>En absoluto</span><span>Totalmente</span></div>`;document.getElementById('answer').oninput=e=>{answers[current]=Number(e.target.value);document.getElementById('value').textContent=e.target.value};document.getElementById('back').disabled=current===0;document.getElementById('next').textContent=current===questions.length-1?'Ver mi resultado':'Siguiente'}
-        document.getElementById('back').onclick=()=>{if(current>0){current--;render()}};document.getElementById('survey-form').onsubmit=async e=>{e.preventDefault();if(current<questions.length-1){current++;render();return}const next=document.getElementById('next');next.disabled=true;next.textContent='Calculando...';const response=await fetch('/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({results:answers})});if(response.ok){document.open();document.write(await response.text());document.close()}else{next.disabled=false;next.textContent='Reintentar';alert('No se ha podido calcular el resultado.')}};render();
+        const questions = [
+            "El Estado debería redistribuir más riqueza para reducir la desigualdad.",
+            "La economía debería funcionar con más libertad de mercado y menos regulación pública.",
+            "Sanidad, educación y dependencia deberían ser mayoritariamente públicas, aunque implique pagar más impuestos.",
+            "El Estado debería intervenir para garantizar vivienda asequible, incluso regulando los alquileres.",
+            "Bajar impuestos debería ser prioritario, aunque reduzca algunos servicios públicos.",
+            "Las grandes empresas y los sectores estratégicos deberían estar más supervisados por el Estado.",
+            "La libertad individual debe protegerse aunque contradiga costumbres o normas morales tradicionales.",
+            "La familia, la tradición y la autoridad deberían tener más peso en la vida pública.",
+            "La igualdad entre hombres y mujeres y los derechos LGTBI deberían avanzar aunque genere conflicto cultural.",
+            "Para reducir la delincuencia, habría que priorizar penas más duras y más presencia policial.",
+            "La inmigración debería facilitarse cuando exista un plan real de integración y empleo.",
+            "El Estado debería acelerar la transición ecológica aunque algunas medidas encarezcan el consumo a corto plazo.",
+            "Las comunidades con una identidad nacional propia deberían poder decidir más sobre su futuro político.",
+            "España debería reforzar una identidad nacional común frente a la fragmentación territorial.",
+            "España debería recuperar soberanía frente a decisiones de la Unión Europea.",
+            "La pertenencia a la Unión Europea aporta más beneficios que costes y debería profundizarse.",
+            "La diversidad cultural y lingüística debería tener más reconocimiento en las instituciones del Estado.",
+            "Las políticas migratorias deberían priorizar la cohesión cultural y las costumbres compartidas.",
+            "Las pensiones públicas deberían protegerse aunque haya que reformar impuestos y cotizaciones.",
+            "En situaciones de crisis, la estabilidad y el orden deberían pesar más que ampliar derechos o libertades."
+        ];
+        const questionsContainer = document.getElementById('questions-container');
+        questions.forEach((question, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'text-center rounded-xl p-4 pb-5 bg-cyan-950 mb-2';
+            const questionLabel = document.createElement('h3');
+            questionLabel.className = 'text-center text-lg font-semibold mx-2 mb-6';
+            questionLabel.textContent = question;
+            questionDiv.appendChild(questionLabel);
+            const rangeWrapper = document.createElement('div');
+            rangeWrapper.className = 'range-wrapper flex justify-center';
+            const rangeInput = document.createElement('input');
+            rangeInput.type = 'range'; rangeInput.min = '1'; rangeInput.max = '10'; rangeInput.value = '5';
+            rangeInput.className = 'range-input'; rangeInput.name = `question${index}`;
+            const rangeValue = document.createElement('div');
+            rangeValue.className = 'range-value'; rangeValue.textContent = '5';
+            rangeInput.oninput = () => { rangeValue.textContent = rangeInput.value; };
+            rangeWrapper.appendChild(rangeInput); rangeWrapper.appendChild(rangeValue); questionDiv.appendChild(rangeWrapper); questionsContainer.appendChild(questionDiv);
+        });
+        document.getElementById('survey-form').onsubmit = async function (event) {
+            event.preventDefault();
+            const results = Array.from(new FormData(event.target).values()).map(value => parseInt(value));
+            const button = event.target.querySelector('button[type="submit"]'); button.disabled = true; button.textContent = 'Calculando...';
+            const response = await fetch('/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ results }) });
+            if (response.ok) { document.open(); document.write(await response.text()); document.close(); }
+            else { button.disabled = false; button.textContent = 'Reintentar'; alert('No se ha podido calcular el resultado.'); }
+        };
     </script>
 </body>
-
 </html>
