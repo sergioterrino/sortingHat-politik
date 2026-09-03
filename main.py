@@ -1,4 +1,5 @@
 from math import sqrt
+from pathlib import Path
 from typing import List
 
 from fastapi import FastAPI, HTTPException, Request
@@ -9,9 +10,10 @@ from pydantic import BaseModel
 
 from questions import POLITIC_QUESTIONS
 
+BASE_DIR = Path(__file__).resolve().parent
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 
 class SurveyResponse(BaseModel):
@@ -82,7 +84,7 @@ def summarize_profile(profile):
     if len(top) >= 2:
         first = top[0]
         second = top[1]
-        if abs(profile["economic"] - IDEOLOGY_PROFILES[first]["economic"]) < 12 and abs(profile["social"] - IDEOLOGY_PROFILES[first]["social"]) < 12:
+        if profile["distance_to_top"] < 45:
             return f"Tu perfil es mixto entre {first} y {second}. No encajas en un único bloque: tienes una mezcla de {first} y {second}."
 
     if profile["closest_ideology"] == "comunismo":
@@ -104,9 +106,17 @@ def summarize_profile(profile):
     return "Tu perfil combina varios ejes ideológicos y no encaja completamente en una sola etiqueta."
 
 
+def axis_label(value, left, right):
+    if value < -25:
+        return right
+    if value > 25:
+        return left
+    return "posición intermedia"
+
+
 @app.get("/", response_class=HTMLResponse)
 async def get_form():
-    with open("index.html", "r", encoding="utf-8") as f:
+    with open(BASE_DIR / "index.html", "r", encoding="utf-8") as f:
         return HTMLResponse(content=f.read(), status_code=200)
 
 
@@ -127,6 +137,11 @@ async def submit_survey(request: Request, survey_response: SurveyResponse):
         return ranked[0][0]
 
     closest_party = close_party(profile)
+    axis_labels = {
+        "economic_label": axis_label(profile["economic"], "más intervención pública", "más libertad de mercado"),
+        "social_label": axis_label(profile["social"], "más libertad social", "más orden y tradición"),
+        "identity_label": axis_label(profile["identity"], "más pluralidad territorial", "más identidad nacional"),
+    }
     return templates.TemplateResponse(
         "result.html",
         {
@@ -139,6 +154,7 @@ async def submit_survey(request: Request, survey_response: SurveyResponse):
             "economic": profile["economic"],
             "social": profile["social"],
             "identity": profile["identity"],
+            **axis_labels,
         },
     )
 

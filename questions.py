@@ -1,74 +1,22 @@
 POLITIC_QUESTIONS = [
-    {
-        "id": "q1",
-        "axis": "economic",
-        "direction": 1,
-        "text": "El Estado debería redistribuir más riqueza para reducir la desigualdad social."
-    },
-    {
-        "id": "q2",
-        "axis": "economic",
-        "direction": -1,
-        "text": "La economía debería funcionar más con libertad de mercado y menos con intervención pública."
-    },
-    {
-        "id": "q3",
-        "axis": "economic",
-        "direction": 1,
-        "text": "La sanidad, la educación y otros servicios esenciales deberían ser mayoritariamente públicos."
-    },
-    {
-        "id": "q4",
-        "axis": "economic",
-        "direction": 1,
-        "text": "Las empresas estratégicas y los servicios esenciales deberían estar más controlados por el Estado."
-    },
-    {
-        "id": "q5",
-        "axis": "social",
-        "direction": 1,
-        "text": "La libertad individual y la diversidad deben primar por encima de las normas morales tradicionales."
-    },
-    {
-        "id": "q6",
-        "axis": "social",
-        "direction": -1,
-        "text": "La familia, la tradición y el orden social deberían tener más peso en la política."
-    },
-    {
-        "id": "q7",
-        "axis": "social",
-        "direction": 1,
-        "text": "La igualdad de género y los derechos civiles deben avanzar más rápidamente."
-    },
-    {
-        "id": "q8",
-        "axis": "social",
-        "direction": -1,
-        "text": "La seguridad y el orden público deberían tener prioridad ante otras consideraciones sociales."
-    },
-    {
-        "id": "q9",
-        "axis": "identity",
-        "direction": 1,
-        "text": "Las regiones con identidad propia deberían poder decidir más sobre su futuro político."
-    },
-    {
-        "id": "q10",
-        "axis": "identity",
-        "direction": 1,
-        "text": "España debería priorizar la identidad nacional y la cultura propia en políticas migratorias y sociales."
-    },
-    {
-        "id": "q11",
-        "axis": "identity",
-        "direction": 1,
-        "text": "España debe recuperar más soberanía frente a decisiones de la Unión Europea."
-    },
-    {
-        "id": "q12",
-        "axis": "identity",
-        "direction": -1,
-        "text": "La diversidad cultural y la pluralidad social deben priorizarse por encima de la identidad nacional."
-    }
+    {"id": "q1", "axis": "economic", "direction": 1, "text": "El Estado debería redistribuir más riqueza para reducir la desigualdad."},
+    {"id": "q2", "axis": "economic", "direction": -1, "text": "La economía debería funcionar con más libertad de mercado y menos regulación pública."},
+    {"id": "q3", "axis": "economic", "direction": 1, "text": "Sanidad, educación y dependencia deberían ser mayoritariamente públicas, aunque implique pagar más impuestos."},
+    {"id": "q4", "axis": "economic", "direction": 1, "text": "El Estado debería intervenir para garantizar vivienda asequible, incluso regulando los alquileres."},
+    {"id": "q5", "axis": "economic", "direction": -1, "text": "Bajar impuestos debería ser prioritario, aunque reduzca algunos servicios públicos."},
+    {"id": "q6", "axis": "economic", "direction": 1, "text": "Las grandes empresas y los sectores estratégicos deberían estar más supervisados por el Estado."},
+    {"id": "q7", "axis": "social", "direction": 1, "text": "La libertad individual debe protegerse aunque contradiga costumbres o normas morales tradicionales."},
+    {"id": "q8", "axis": "social", "direction": -1, "text": "La familia, la tradición y la autoridad deberían tener más peso en la vida pública."},
+    {"id": "q9", "axis": "social", "direction": 1, "text": "La igualdad entre hombres y mujeres y los derechos LGTBI deberían avanzar aunque genere conflicto cultural."},
+    {"id": "q10", "axis": "social", "direction": -1, "text": "Para reducir la delincuencia, habría que priorizar penas más duras y más presencia policial."},
+    {"id": "q11", "axis": "social", "direction": 1, "text": "La inmigración debería facilitarse cuando exista un plan real de integración y empleo."},
+    {"id": "q12", "axis": "social", "direction": 1, "text": "El Estado debería acelerar la transición ecológica aunque algunas medidas encarezcan el consumo a corto plazo."},
+    {"id": "q13", "axis": "identity", "direction": 1, "text": "Las comunidades con una identidad nacional propia deberían poder decidir más sobre su futuro político."},
+    {"id": "q14", "axis": "identity", "direction": -1, "text": "España debería reforzar una identidad nacional común frente a la fragmentación territorial."},
+    {"id": "q15", "axis": "identity", "direction": 1, "text": "España debería recuperar soberanía frente a decisiones de la Unión Europea."},
+    {"id": "q16", "axis": "identity", "direction": -1, "text": "La pertenencia a la Unión Europea aporta más beneficios que costes y debería profundizarse."},
+    {"id": "q17", "axis": "identity", "direction": 1, "text": "La diversidad cultural y lingüística debería tener más reconocimiento en las instituciones del Estado."},
+    {"id": "q18", "axis": "identity", "direction": -1, "text": "Las políticas migratorias deberían priorizar la cohesión cultural y las costumbres compartidas."},
+    {"id": "q19", "axis": "economic", "direction": 1, "text": "Las pensiones públicas deberían protegerse aunque haya que reformar impuestos y cotizaciones."},
+    {"id": "q20", "axis": "social", "direction": -1, "text": "En situaciones de crisis, la estabilidad y el orden deberían pesar más que ampliar derechos o libertades."},
 ]
