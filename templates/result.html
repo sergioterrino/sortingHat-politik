@@ -4,51 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SortingHat - politik</title>
-    <link href="../static/output.css" rel="stylesheet">
+    <title>Tu brújula política</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--ink:#17211d;--muted:#68736d;--paper:#f4f0e7;--card:#fffdf8;--lime:#d8f35b;--coral:#f27f63;--line:#d9d6cc}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 10%,#e6f2c2 0,transparent 27%),var(--paper);font:16px 'DM Sans',sans-serif}main{max-width:1000px;margin:auto;padding:28px 22px 70px}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:70px}.brand{font:700 22px 'Space Grotesk'}.brand span{color:#e35f42}header a{color:var(--muted);text-decoration:none;font-size:14px}h1,h2{font-family:'Space Grotesk';letter-spacing:0}h1{font-size:clamp(38px,7vw,76px);line-height:1;margin:0;max-width:750px}.kicker{color:#bb543c;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px}.lead{color:var(--muted);font-size:19px;line-height:1.5;max-width:690px;margin:24px 0 45px}.layout{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}.panel{background:var(--card);border:1px solid var(--line);padding:30px}.panel h2{font-size:21px;margin:0 0 22px}.axis{margin:22px 0}.axis-head{display:flex;justify-content:space-between;gap:15px;font-size:13px;color:var(--muted);margin-bottom:9px}.axis-head strong{color:var(--ink);font-size:14px}.track{height:12px;background:#e1ded4;position:relative}.track:before{content:'';position:absolute;left:50%;height:100%;border-left:1px solid #aaa79e}.fill{height:100%;background:var(--coral)}.axis-caption{color:var(--muted);font-size:13px;margin-top:7px}.match{border-top:1px solid var(--line);padding:15px 0;display:flex;justify-content:space-between;text-transform:capitalize}.match:first-of-type{border-top:0}.match b{font-family:'Space Grotesk'}.badge{background:var(--lime);padding:4px 8px;font-size:12px}.party{display:flex;align-items:center;gap:22px;margin-top:10px}.party img{width:100px;height:100px;object-fit:contain;background:#f1eee6}.party-name{font:700 25px 'Space Grotesk';text-transform:uppercase}.note{font-size:13px;line-height:1.5;color:var(--muted);margin-top:28px}.actions{margin-top:28px;display:flex;gap:12px}button{border:0;padding:14px 20px;background:var(--ink);color:#fff;font:700 15px 'DM Sans';cursor:pointer;border-radius:2px}button.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}@media(max-width:700px){main{padding:22px 16px 50px}header{margin-bottom:48px}.lead{font-size:17px;margin-bottom:32px}.layout{grid-template-columns:1fr}.panel{padding:23px}.party img{width:75px;height:75px}.party-name{font-size:20px}}
+    </style>
 </head>
 
 <body>
-    <div class="w-full p-4 px-0 pt-3 md:px-18 lg:mx-18 xl:px-28 flex flex-col justify-center">
-        <nav class="flex justify-between items-center px-2">
-            <a href="/">
-                <div class="flex w-40">
-                    <img src="../static/hat.png" class="w-24" />
-                    <img src="../static/sortingHat.png" class="relative right-4 " />
-                </div>
-            </a>
-            <div class="text-center">
-                <h3 class="text-sm">Created by</h3>
-                <h1 class="text-md font-bold">Sergio Terrino</h1>
-            </div>
-        </nav>
-        <div class="text-center h-full flex flex-col justify-center p-6 md:p-12 mt-4">
-            <div class="mb-4">
-                <div>
-                    <h1>Se acerca más al espectro político de
-                        <span class="font-bold">{{ closest_ideology }} </span>
-                    </h1>
-                    <p class="mt-3 text-lg">{{ summary }}</p>
-                    <div class="justify-center mx-auto mt-4 grid sm:grid-cols-1">
-                        {% for match in top_matches %}
-                        <h1 class="px-2 py-2 rounded-xl mx-2 border mt-2">{{ match }}</h1>
-                        {% endfor %}
-                    </div>
-                    <div class="mt-6 text-left mx-auto max-w-xl">
-                        <p><strong>Economía:</strong> {{ economic }}</p>
-                        <p><strong>Social:</strong> {{ social }}</p>
-                        <p><strong>Identidad:</strong> {{ identity }}</p>
-                    </div>
-                </div>
-                <h1 class="mt-4">El partido más cercano es:
-                    <span class="font-bold">{{ closest_party }} </span>
-                </h1>
-            </div>
-            <div class="md:w-4 flex justify-center">
-                <img class="mt-4 rounded-xl" src="/static/{{ closest_party_photo }}.png" alt="{{ closest_ideology }}">
-            </div>
-
-        </div>
+<main>
+<header>
+<div class="brand">BRÚJULA<span> / </span>politik</div>
+<a href="/">Repetir el test</a>
+</header>
+<div class="kicker">Tu lectura política</div>
+<h1>No eres una etiqueta. Eres un perfil.</h1>
+<p class="lead">{{ summary }}</p>
+<section class="layout">
+<div class="panel">
+<h2>Tus tres coordenadas</h2>
+<div class="axis">
+<div class="axis-head">
+<span>Más intervención pública</span>
+<strong>Economía</strong>
+<span>Más mercado</span>
+</div>
+<div class="track">
+<div class="fill" style="width:{{ (economic + 100) / 2 }}%"></div>
+</div>
+<div class="axis-caption">{{ economic_label }}</div>
+</div>
+<div class="axis">
+<div class="axis-head">
+<span>Más libertad social</span>
+<strong>Valores</strong>
+<span>Más orden</span>
+</div>
+<div class="track">
+<div class="fill" style="width:{{ (social + 100) / 2 }}%"></div>
+</div>
+<div class="axis-caption">{{ social_label }}</div>
+</div>
+<div class="axis">
+<div class="axis-head">
+<span>Más pluralidad territorial</span>
+<strong>Identidad</strong>
+<span>Más identidad nacional</span>
+</div>
+<div class="track">
+<div class="fill" style="width:{{ (identity + 100) / 2 }}%"></div>
+</div>
+<div class="axis-caption">{{ identity_label }}</div>
+</div>
+<p class="note">Las coordenadas muestran tendencias, no certezas. La política real tiene matices y cambia con el contexto.</p>
+</div>
+<div class="panel">
+<h2>Tus afinidades ideológicas</h2>
+{% for match in top_matches %}
+<div class="match"><b>{{ match }}</b>{% if loop.first %}<span class="badge">principal</span>{% endif %}</div>
+{% endfor %}
+<h2 style="margin-top:30px">Partido más cercano</h2>
+<div class="party">
+<img src="/static/{{ closest_party_photo }}.png" alt="">
+<div class="party-name">{{ closest_party }}</div>
+</div>
+<p class="note">La coincidencia se calcula comparando tus coordenadas con posiciones políticas orientativas. No es una recomendación de voto.</p>
+</div>
+</section>
+<div class="actions">
+<button onclick="window.print()">Guardar resultado</button>
+<button class="secondary" onclick="location.href='/'">Volver a empezar</button>
+</div>
+</main>
+</body>
+</html>
     </div>
 </body>
 

@@ -34,5 +34,6 @@ def test_profile_summary_mentions_mixture_when_ideological_distance_is_small():
         "identity": 15,
         "closest_ideology": "socialdemocracia",
         "top_matches": ["socialdemocracia", "liberalismo"],
+        "distance_to_top": 40,
     })
     assert "mixto" in summary.lower() or "socialdemocracia" in summary.lower()
