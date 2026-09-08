@@ -1,0 +1,146 @@
+[
+  {
+    "party": "pp",
+    "election": "generales-2023",
+    "kind": "programa",
+    "url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+    "local_file": "pp_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "sumar",
+    "election": "generales-2023",
+    "kind": "programa",
+    "url": "https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf",
+    "local_file": "sumar_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "podemos",
+    "election": "municipales-2023",
+    "kind": "programa-marco",
+    "url": "https://podemos.info/wp-content/uploads/2023/05/Podemos_programa_marco_28M_interactivo.pdf",
+    "local_file": "podemos_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "pnv",
+    "election": "2023",
+    "kind": "official-document-index",
+    "url": "https://www.eaj-pnv.eus/es/documentos/?a%5B%5D=59",
+    "local_file": "pnv_programa_generales_2023.pdf",
+    "status": "index-downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "pnv",
+    "election": "generales-2023",
+    "kind": "programa",
+    "url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j",
+    "local_file": "pnv_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "psoe",
+    "election": "generales-2023",
+    "kind": "programa",
+    "url": "https://www.psoe.es/media-content/2023/07/PROGRAMA_ELECTORAL-GENERALES-2023.pdf",
+    "local_file": "psoe_programa_generales_2023.pdf",
+    "status": "blocked-by-official-site",
+    "reviewed": false
+  },
+  {
+    "party": "vox",
+    "election": "no-especificada",
+    "kind": "official-program-page",
+    "url": "https://www.voxespana.es/programa/programa-electoral-vox",
+    "local_file": "vox_programa_generales_2023.pdf",
+    "status": "blocked-by-official-site",
+    "reviewed": false
+  },
+  {
+    "party": "bildu",
+    "election": "no-especificada",
+    "kind": "programa",
+    "url": "https://ehbildu.eus/dokumentuak/herriprogramak/ETORKIZUNEKO%20HERRIA_CAS.pdf",
+    "local_file": "ehbildu_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "bng",
+    "election": "generales-2023",
+    "kind": "programa",
+    "url": "https://www.bng.gal/media/bnggaliza/files/2023/07/05/23_bng_xerais_programa.pdf",
+    "local_file": "bng_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "coalicion_canaria",
+    "election": "autonomicas-municipales-2023",
+    "kind": "programa",
+    "url": "https://coalicioncanaria.org/wp-content/uploads/cc-pdf/programas-electorales/00%20Programa%20Electoral%20Elecciones%20auton%C3%B3micas%20y%20municipales%202023.pdf",
+    "local_file": "coalicion_canaria_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "frente_obrero",
+    "election": "no-especificada",
+    "kind": "programa",
+    "url": "https://frenteobrero.es/wp-content/uploads/2025/01/Programa.pdf",
+    "local_file": "frente_obrero_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "pacma",
+    "election": "generales-2023",
+    "kind": "programa",
+    "url": "https://www.pacma.es/wp-content/uploads/2023/07/PACMA_PE_GENERALES_23J23.pdf",
+    "local_file": "pacma_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "cup",
+    "election": "generales-2023",
+    "kind": "programa",
+    "url": "https://barcelona.cup.cat/sites/default/files/programa_cup_bcn_2023.pdf",
+    "local_file": null,
+    "status": "blocked-by-official-site",
+    "reviewed": false
+  },
+  {
+    "party": "upn",
+    "election": "generales-2023",
+    "kind": "programa",
+    "url": "https://www.upn.org/wp-content/uploads/2023/07/Programa-Generales-23J_V2-1.pdf",
+    "local_file": "upn_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "teruel_existe",
+    "election": "autonomicas-2023",
+    "kind": "programa",
+    "url": "https://teruelexiste.info/wp-content/uploads/2023/05/PROGRAMA-AUTONOMICO-28M-TERUEL-EXISTE.pdf",
+    "local_file": "teruel_existe_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  },
+  {
+    "party": "nueva_canarias",
+    "election": "autonomicas-2023",
+    "kind": "programa",
+    "url": "https://nuevacanarias.org/wp-content/uploads/2023/04/Programa_Electoral_2023.pdf",
+    "local_file": "nueva_canarias_programa_generales_2023.pdf",
+    "status": "downloaded",
+    "reviewed": false
+  }
+]
