@@ -7,7 +7,7 @@ from main import calculate_profile, summarize_profile
 
 
 def test_profile_is_balanced_for_centered_answers():
-    profile = calculate_profile([5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5])
+    profile = calculate_profile([3] * 16)
     assert profile["economic"] == 0
     assert profile["social"] == 0
     assert profile["identity"] == 0
@@ -21,7 +21,7 @@ def test_profile_is_balanced_for_centered_answers():
 
 
 def test_progressive_left_score_is_detected():
-    profile = calculate_profile([9, 1, 9, 9, 9, 1, 9, 1, 8, 1, 9, 1])
+    profile = calculate_profile([5, 1, 5, 5, 5, 5, 1, 5, 5, 1, 5, 1, 1, 5, 5, 5])
     assert profile["economic"] > 40
     assert profile["social"] > 40
     assert profile["closest_ideology"] in {"socialismo", "socialdemocracia", "comunismo"}

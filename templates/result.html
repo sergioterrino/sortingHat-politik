@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SortingHat - politik</title>
-    <link href="../static/output.css" rel="stylesheet">
+11    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tu resultado | SortingHat</title><link href="../static/output.css" rel="stylesheet">
+    <style>
+        :root{--violet:#6d28d9;--cyan:#083f4a;--lime:#c9f27b}*{box-sizing:border-box}body{background:linear-gradient(135deg,#063b46,#07586a);min-height:100vh}.page{width:min(100% - 32px,1080px);margin:0 auto}.winner{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}.winner img{width:clamp(96px,16vw,176px);height:clamp(96px,16vw,176px);object-fit:contain;flex:none}.winner-mark{background:var(--lime);color:#183b2f}.podium-item{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18)}.axis-panel{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff}.axis-track{height:9px;background:rgba(255,255,255,.2);border-radius:99px;overflow:hidden}.axis-fill{height:100%;background:#c9f27b;border-radius:99px}.axis-panel .muted{color:#c5e2e7}
+    </style>
 </head>
-<body>
-    <div class="w-full p-4 px-0 pt-3 md:px-18 lg:mx-18 xl:px-28 flex flex-col justify-center">
-        <nav class="flex justify-between items-center px-2">
-            <a href="/"><div class="flex w-40"><img src="../static/hat.png" class="w-24" /><img src="../static/sortingHat.png" class="relative right-4" /></div></a>
-            <div class="text-center"><h3 class="text-sm">Created by</h3><h1 class="text-md font-bold">Sergio Terrino</h1></div>
-        </nav>
-        <div class="text-center h-full flex flex-col justify-center p-6 md:p-12 mt-4">
-            <div class="mb-4">
-                <h1>Te acercas más al espectro político del <span class="font-bold">{{ closest_ideology }}</span></h1>
-                <p class="mt-4 text-lg">{{ summary }}</p>
-                <div class="justify-center mx-auto mt-4 grid sm:grid-cols-1 md:grid-cols-3 gap-2">
-                    {% for match in top_matches %}<div class="px-2 py-2 rounded-xl border border-gray-400 mt-2">{{ match }}</div>{% endfor %}
-                </div>
-                <div class="mt-6 mx-auto max-w-xl text-left">
-                    <h2 class="text-xl font-bold text-center mb-3">Tus ejes</h2>
-                    <div class="mb-3"><div class="flex justify-between"><span>Intervención pública</span><span>Mercado</span></div><div class="w-full bg-gray-300 rounded-full h-3"><div class="bg-violet-900 h-3 rounded-full" style="width:{{ (economic + 100) / 2 }}%"></div></div><p class="text-sm text-center">{{ economic_label }}</p></div>
-                    <div class="mb-3"><div class="flex justify-between"><span>Libertad social</span><span>Orden y tradición</span></div><div class="w-full bg-gray-300 rounded-full h-3"><div class="bg-violet-900 h-3 rounded-full" style="width:{{ (social + 100) / 2 }}%"></div></div><p class="text-sm text-center">{{ social_label }}</p></div>
-                    <div class="mb-3"><div class="flex justify-between"><span>Pluralidad territorial</span><span>Identidad nacional</span></div><div class="w-full bg-gray-300 rounded-full h-3"><div class="bg-violet-900 h-3 rounded-full" style="width:{{ (identity + 100) / 2 }}%"></div></div><p class="text-sm text-center">{{ identity_label }}</p></div>
-                </div>
-                <h1 class="mt-6">El partido más cercano es: <span class="font-bold">{{ closest_party }}</span></h1>
-                <p class="text-sm mt-2">La coincidencia es orientativa y no constituye una recomendación de voto.</p>
-            </div>
-            <div class="flex justify-center"><img class="mt-4 rounded-xl max-w-xs max-h-56 object-contain" src="/static/{{ closest_party_photo }}.png" alt="{{ closest_party }}"></div>
-            <div class="mt-6"><a href="/" class="inline-block py-3 px-6 font-bold rounded-xl bg-violet-900 hover:bg-violet-950">Volver a empezar</a></div>
-        </div>
-    </div>
+<body class="text-white">
+<div class="page py-5 md:py-8">
+    <nav class="flex justify-between items-center"><a href="/"><div class="flex w-40"><img src="../static/hat.png" class="w-24" /><img src="../static/sortingHat.png" class="relative right-4" /></div></a><a href="/" class="text-sm hover:underline">Repetir el test</a></nav>
+    <main class="mt-8 md:mt-12">
+        <p class="text-xs uppercase tracking-widest text-cyan-200">Resultado</p>
+        <h1 class="text-3xl md:text-5xl font-bold mt-2">Tu opción más compatible</h1>
+        <section class="winner rounded-2xl p-6 md:p-8 mt-8 shadow-2xl flex flex-col md:flex-row md:items-center gap-6">
+            <div class="flex-1"><span class="winner-mark inline-block px-3 py-1 rounded-full text-xs font-bold uppercase">Coincidencia principal</span><h2 class="text-4xl md:text-6xl font-bold mt-4">{{ closest_party }}</h2><p class="mt-3 text-cyan-100">{{ summary }}</p><p class="mt-2 text-sm text-cyan-100">La puntuación es orientativa y compara posiciones por temas; no es una recomendación de voto.</p></div>
+            {% if closest_party_photo %}<img class="w-32 h-32 md:w-44 md:h-44 object-contain rounded-xl" src="/static/{{ closest_party_photo }}.png" alt="{{ closest_party }}">{% endif %}
+        </section>
+        <section class="mt-8"><div class="flex items-end justify-between mb-3"><div><p class="text-xs uppercase tracking-widest text-cyan-200">Ranking</p><h2 class="text-2xl font-bold">Tus siguientes afinidades</h2></div><span class="text-xs text-cyan-200">de mayor a menor</span></div><div class="grid md:grid-cols-2 gap-3">{% for party in party_matches %}<div class="podium-item rounded-xl p-4"><div class="flex justify-between items-center"><span class="font-bold">{{ loop.index }}. {{ party.name }}</span><span class="text-lg font-bold">{{ party.score }}%</span></div><div class="w-full bg-black/20 rounded-full h-2 mt-3"><div class="bg-violet-400 h-2 rounded-full" style="width:{{ party.score }}%"></div></div><p class="text-xs text-cyan-100 mt-2">{{ party.data_quality }}</p></div>{% endfor %}</div></section>
+        <section class="axis-panel rounded-2xl p-6 mt-10"><p class="text-xs uppercase tracking-widest text-cyan-200">Tu mapa de ideas</p><h2 class="text-2xl font-bold mt-1">Tres ejes para entender el resultado</h2><div class="grid md:grid-cols-3 gap-5 mt-6"><div><div class="flex justify-between text-xs mb-2"><span>Intervención</span><span>Mercado</span></div><div class="axis-track"><div class="axis-fill" style="width:{{ (economic + 100) / 2 }}%"></div></div><p class="muted text-xs mt-2">{{ economic_label }}</p></div><div><div class="flex justify-between text-xs mb-2"><span>Libertad</span><span>Orden</span></div><div class="axis-track"><div class="axis-fill" style="width:{{ (social + 100) / 2 }}%"></div></div><p class="muted text-xs mt-2">{{ social_label }}</p></div><div><div class="flex justify-between text-xs mb-2"><span>Pluralidad</span><span>Identidad nacional</span></div><div class="axis-track"><div class="axis-fill" style="width:{{ (identity + 100) / 2 }}%"></div></div><p class="muted text-xs mt-2">{{ identity_label }}</p></div></div></section>
+        <p class="text-xs text-cyan-200 mt-6">{{ data_notice }}</p><div class="text-center mt-7"><a href="/" class="inline-block py-3 px-6 font-bold rounded-xl bg-violet-700 hover:bg-violet-800">Volver a empezar</a></div>
+    </main>
+</div>
 </body>
 </html>

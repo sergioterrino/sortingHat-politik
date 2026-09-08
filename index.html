@@ -1,77 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="./static/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SortingHat - politik</title>
-    <link href="./static/output.css" rel="stylesheet">
+    <meta charset="UTF-8"><link rel="icon" type="image/svg+xml" href="./static/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SortingHat - politik</title><link href="./static/output.css" rel="stylesheet">
     <style>
-        .range-wrapper { display: flex; align-items: center; }
-        .range-input { margin: 0 10px; }
-        .range-value { width: 30px; text-align: center; }
+        .range-wrapper{display:flex;align-items:center}.range-input{margin:0 10px}.range-value{width:30px;text-align:center}.question-card{scroll-margin-top:20px}.section-title{color:#a5d8e5;letter-spacing:.04em}.range-input{accent-color:#8b5cf6}
     </style>
 </head>
 <body>
-    <div class="w-full p-4 px-0 pt-3 md:px-18 lg:mx-18 xl:px-28 flex flex-col justify-center">
-        <nav class="flex justify-between items-center px-2">
-            <a href="/"><div class="flex w-40"><img src="./static/hat.png" class="w-24" /><img src="./static/sortingHat.png" class="relative right-4" /></div></a>
-            <div class="text-center"><h3 class="text-sm">Created by</h3><h1 class="text-md font-bold">Sergio Terrino</h1></div>
-        </nav>
-        <form id="survey-form" class="bg-transparent p-6 rounded-lg shadow-md">
-            <div id="questions-container"></div>
-            <div class="mx-auto text-center mt-4"><button type="submit" class="py-3 mt-2 font-bold rounded-xl w-full bg-violet-900 hover:bg-violet-950">Enviar</button></div>
-        </form>
-    </div>
-    <script>
-        const questions = [
-            "El Estado debería redistribuir más riqueza para reducir la desigualdad.",
-            "La economía debería funcionar con más libertad de mercado y menos regulación pública.",
-            "Sanidad, educación y dependencia deberían ser mayoritariamente públicas, aunque implique pagar más impuestos.",
-            "El Estado debería intervenir para garantizar vivienda asequible, incluso regulando los alquileres.",
-            "Bajar impuestos debería ser prioritario, aunque reduzca algunos servicios públicos.",
-            "Las grandes empresas y los sectores estratégicos deberían estar más supervisados por el Estado.",
-            "La libertad individual debe protegerse aunque contradiga costumbres o normas morales tradicionales.",
-            "La familia, la tradición y la autoridad deberían tener más peso en la vida pública.",
-            "La igualdad entre hombres y mujeres y los derechos LGTBI deberían avanzar aunque genere conflicto cultural.",
-            "Para reducir la delincuencia, habría que priorizar penas más duras y más presencia policial.",
-            "La inmigración debería facilitarse cuando exista un plan real de integración y empleo.",
-            "El Estado debería acelerar la transición ecológica aunque algunas medidas encarezcan el consumo a corto plazo.",
-            "Las comunidades con una identidad nacional propia deberían poder decidir más sobre su futuro político.",
-            "España debería reforzar una identidad nacional común frente a la fragmentación territorial.",
-            "España debería recuperar soberanía frente a decisiones de la Unión Europea.",
-            "La pertenencia a la Unión Europea aporta más beneficios que costes y debería profundizarse.",
-            "La diversidad cultural y lingüística debería tener más reconocimiento en las instituciones del Estado.",
-            "Las políticas migratorias deberían priorizar la cohesión cultural y las costumbres compartidas.",
-            "Las pensiones públicas deberían protegerse aunque haya que reformar impuestos y cotizaciones.",
-            "En situaciones de crisis, la estabilidad y el orden deberían pesar más que ampliar derechos o libertades."
-        ];
-        const questionsContainer = document.getElementById('questions-container');
-        questions.forEach((question, index) => {
-            const questionDiv = document.createElement('div');
-            questionDiv.className = 'text-center rounded-xl p-4 pb-5 bg-cyan-950 mb-2';
-            const questionLabel = document.createElement('h3');
-            questionLabel.className = 'text-center text-lg font-semibold mx-2 mb-6';
-            questionLabel.textContent = question;
-            questionDiv.appendChild(questionLabel);
-            const rangeWrapper = document.createElement('div');
-            rangeWrapper.className = 'range-wrapper flex justify-center';
-            const rangeInput = document.createElement('input');
-            rangeInput.type = 'range'; rangeInput.min = '1'; rangeInput.max = '10'; rangeInput.value = '5';
-            rangeInput.className = 'range-input'; rangeInput.name = `question${index}`;
-            const rangeValue = document.createElement('div');
-            rangeValue.className = 'range-value'; rangeValue.textContent = '5';
-            rangeInput.oninput = () => { rangeValue.textContent = rangeInput.value; };
-            rangeWrapper.appendChild(rangeInput); rangeWrapper.appendChild(rangeValue); questionDiv.appendChild(rangeWrapper); questionsContainer.appendChild(questionDiv);
-        });
-        document.getElementById('survey-form').onsubmit = async function (event) {
-            event.preventDefault();
-            const results = Array.from(new FormData(event.target).values()).map(value => parseInt(value));
-            const button = event.target.querySelector('button[type="submit"]'); button.disabled = true; button.textContent = 'Calculando...';
-            const response = await fetch('/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ results }) });
-            if (response.ok) { document.open(); document.write(await response.text()); document.close(); }
-            else { button.disabled = false; button.textContent = 'Reintentar'; alert('No se ha podido calcular el resultado.'); }
-        };
-    </script>
+<div class="w-full p-4 px-0 pt-3 md:px-18 lg:mx-18 xl:px-28 flex flex-col justify-center">
+    <nav class="flex justify-between items-center px-2"><a href="/"><div class="flex w-40"><img src="./static/hat.png" class="w-24" /><img src="./static/sortingHat.png" class="relative right-4" /></div></a><div class="text-center"><h3 class="text-sm">Created by</h3><h1 class="text-md font-bold">Sergio Terrino</h1></div></nav>
+    <div class="px-6 mt-6"><div class="flex justify-between text-sm mb-2"><span>Tu mapa político</span><span>16 preguntas</span></div><div class="w-full h-1 bg-cyan-900 rounded"><div class="w-full h-1 bg-violet-500 rounded"></div></div></div>
+    <form id="survey-form" class="bg-transparent p-6 rounded-lg shadow-md">
+        <div id="questions-container"></div>
+        <div class="mx-auto text-center mt-6"><button type="submit" class="py-3 mt-2 font-bold rounded-xl w-full bg-violet-900 hover:bg-violet-950">Ver mi resultado</button></div>
+    </form>
+    <p class="text-center text-xs opacity-70 px-6">Responde según lo que piensas hoy. Puedes revisar tus respuestas antes de enviar.</p>
+</div>
+<script>
+const questions={{ questions_json | safe }};const container=document.getElementById('questions-container');let lastSection='';
+questions.forEach((question,index)=>{if(question.section!==lastSection){const heading=document.createElement('h2');heading.className='section-title text-sm font-bold uppercase mt-7 mb-2';heading.textContent=question.section;container.appendChild(heading);lastSection=question.section}const wrapper=document.createElement('div');wrapper.className='question-card text-center rounded-xl p-4 pb-5 bg-cyan-950 mb-2';const label=document.createElement('h3');label.className='text-center text-lg font-semibold mx-2 mb-5';label.textContent=question.text;wrapper.appendChild(label);const rangeWrapper=document.createElement('div');rangeWrapper.className='range-wrapper flex justify-center';const low=document.createElement('span');low.className='text-xs opacity-70';low.textContent='Nada';const input=document.createElement('input');input.type='range';input.min='1';input.max='5';input.value='3';input.className='range-input flex-1';input.name=`question${index}`;const high=document.createElement('span');high.className='text-xs opacity-70';high.textContent='Mucho';const value=document.createElement('span');value.className='range-value';value.textContent='3';input.oninput=()=>value.textContent=input.value;rangeWrapper.append(low,input,high,value);wrapper.appendChild(rangeWrapper);container.appendChild(wrapper)});
+document.getElementById('survey-form').onsubmit=async event=>{event.preventDefault();const results=Array.from(new FormData(event.target).values()).map(value=>parseInt(value));const button=event.target.querySelector('button[type="submit"]');button.disabled=true;button.textContent='Calculando...';const response=await fetch('/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({results})});if(response.ok){document.open();document.write(await response.text());document.close()}else{button.disabled=false;button.textContent='Reintentar';alert('No se ha podido calcular el resultado.')}};
+</script>
 </body>
 </html>
